@@ -36,3 +36,11 @@ var isAnagram = function (a, b) {
   if (first === -1)  { return false; }
   return isAnagram( a.slice(1), b.slice(0, first) + b.slice(first + 1) );
 };
+
+/*
+ * The isAnagram function can be done a lot faster using a mapping of
+ * prime numbers to each of the lower and upper case alphabet characters.
+ * With the mapping, if two words are anagrams of each other, then they must
+ * consist of the same characters and the multiplication of all the prime
+ * numbers associated with the characters must be equal for the two words.
+*/
