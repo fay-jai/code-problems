@@ -18,6 +18,29 @@
  * http://www.ardendertat.com/2011/09/17/programming-interview-questions-1-array-pair-sum/
 */
 
-var arrayPairSum = function (array) {
+var arrayPairSum = function (value, array) {
+  var len    = array.length;
+  var result = [];
+  var hash   = {};
+  var current, next, i, j;
 
+  for (i = 0; i < len; i += 1) {
+    hash[ array[i] ] = hash[ array[i] ] || 0;
+    hash[ array[i] ] += 1;
+  }
+
+  for (i = 0; i < len - 1; i += 1) {
+    current = array[i];
+    for (j = i + 1; j < len; j += 1) {
+      next = array[j];
+
+      if ( current + next === value && hash[ current ] > 0 && hash[ next ] > 0 ) {
+        result.push( [ current, next ] );
+        hash[ current ] = 0;
+        hash[ next ] = 0;
+      }
+    }
+  }
+
+  return result;
 };
